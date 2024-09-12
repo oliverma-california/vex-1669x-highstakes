@@ -6,3 +6,6 @@
 
 // inline pros::Motor intake(1);
 // inline pros::adi::DigitalIn limit_switch('A');
+
+inline ez::Piston mogo('A');
+inline pros::MotorGroup intake({-2, 10});

@@ -11,7 +11,7 @@ ez::Drive chassis(
     {-13, -14, -15},     // Left Chassis Ports (negative port will reverse it!)
     {16, 17, 18},  // Right Chassis Ports (negative port will reverse it!)
 
-    7,      // IMU Port
+    20,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     600);   // Wheel RPM
 
@@ -41,14 +41,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      Auton("Example Drive\n\nDrive forward and come back.", drive_example),
-      Auton("Example Turn\n\nTurn 3 times.", turn_example),
-      Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
-      Auton("Drive and Turn\n\nSlow down during drive.", wait_until_change_speed),
-      Auton("Swing Example\n\nSwing in an 'S' curve", swing_example),
-      Auton("Motion Chaining\n\nDrive forward, turn, and come back, but blend everything together :D", motion_chaining),
-      Auton("Combine all 3 movements", combining_movements),
-      Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example),
+      Auton("Auton function blue alliance.", auton_blue),
   });
 
   // Initialize chassis and auton selector
@@ -119,9 +112,6 @@ void opcontrol() {
   chassis.drive_brake_set(driver_preference_brake);
 
   bool intake_on = false;
-
-  pros::MotorGroup intake({2, 10});
-  ez::Piston mogo('A');
 
   while (true) {
     // PID Tuner
