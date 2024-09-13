@@ -68,28 +68,60 @@ void turn_example() {
 // Combining Turn + Drive
 ///
 void auton_blue() {
-  chassis.pid_drive_set(48_in, DRIVE_SPEED);
+  mogo.set(false);
+
+  chassis.pid_drive_set(-30_in, 50);
   chassis.pid_wait();
 
-  chassis.pid_turn_set(45_deg, TURN_SPEED);
-  chassis.pid_wait();
+  pros::delay(500);
 
   mogo.set(true);
 
-  chassis.pid_drive_set(34_in, DRIVE_SPEED);
+  intake.move_velocity(-DRIVE_SPEED);
+
+  pros::delay(2000);
+
+  intake.move_velocity(0);
+
+  chassis.pid_turn_relative_set(120_deg, TURN_SPEED);
   chassis.pid_wait();
 
+  chassis.pid_drive_set(27_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  intake.move_velocity(-DRIVE_SPEED);
+
+  chassis.pid_drive_set(5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  pros::delay(3000);
+
+  intake.move_velocity(0);
+
+  chassis.pid_turn_relative_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-33_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  /*
   chassis.pid_turn_set(-45_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-34_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(45_deg, TURN_SPEED);
   chassis.pid_wait();
 
   mogo.set(false);
 
   intake.move_velocity(-DRIVE_SPEED);
 
-  chassis.pid_drive_set(-48_in, DRIVE_SPEED);
+  chassis.pid_drive_set(48_in, DRIVE_SPEED);
   chassis.pid_wait();
 
-  intake.move_velocity(0);
+  intake.move_velocity(0); */
 
 }
 
