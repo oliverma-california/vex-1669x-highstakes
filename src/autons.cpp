@@ -33,25 +33,22 @@ void default_constants() {
 ///
 // Drive Example
 ///
+/*
 void drive_example() {
   // The first parameter is target inches
   // The second parameter is max speed the robot will drive at
   // The third parameter is a boolean (true or false) for enabling/disabling a slew at the start of drive motions
   // for slew, only enable it when the drive distance is greater than the slew distance + a few inches
 
-  chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
+  chassis.pid_drive_set(48_in, DRIVE_SPEED, true);
   chassis.pid_wait();
 }
+*/
 
 ///
 // Turn Example
 ///
+/*
 void turn_example() {
   // The first parameter is the target in degrees
   // The second parameter is max speed the robot will drive at
@@ -65,25 +62,67 @@ void turn_example() {
   chassis.pid_turn_set(0_deg, TURN_SPEED);
   chassis.pid_wait();
 }
+*/
 
 ///
 // Combining Turn + Drive
 ///
-void drive_and_turn() {
-  chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
+void auton_blue() {
+  mogo.set(false);
+
+  chassis.pid_drive_set(-30_in, 50);
+  chassis.pid_wait();
+
+  pros::delay(500);
+
+  mogo.set(true);
+
+  intake.move_velocity(-DRIVE_SPEED);
+
+  pros::delay(2000);
+
+  intake.move_velocity(0);
+
+  chassis.pid_turn_relative_set(120_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(27_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  intake.move_velocity(-DRIVE_SPEED);
+
+  chassis.pid_drive_set(5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  pros::delay(3000);
+
+  intake.move_velocity(0);
+
+  chassis.pid_turn_relative_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-33_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  /*
+  chassis.pid_turn_set(-45_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-34_in, DRIVE_SPEED);
   chassis.pid_wait();
 
   chassis.pid_turn_set(45_deg, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_turn_set(-45_deg, TURN_SPEED);
+  mogo.set(false);
+
+  intake.move_velocity(-DRIVE_SPEED);
+
+  chassis.pid_drive_set(48_in, DRIVE_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_turn_set(0_deg, TURN_SPEED);
-  chassis.pid_wait();
+  intake.move_velocity(0); */
 
-  chassis.pid_drive_set(-24_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
 }
 
 ///
