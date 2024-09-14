@@ -41,7 +41,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      Auton("Auton function blue alliance.", auton_blue),
+      Auton("Auton function blue.", auton_blue),
+      Auton("Auton function red.", auton_red),
   });
 
   // Initialize chassis and auton selector
@@ -157,6 +158,8 @@ void opcontrol() {
     }
     
     mogo.button_toggle(master.get_digital_new_press(DIGITAL_R1));
+
+    mogo_2.button_toggle(master.get_digital_new_press(DIGITAL_R2));
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

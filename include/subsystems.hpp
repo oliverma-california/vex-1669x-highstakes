@@ -8,4 +8,5 @@
 // inline pros::adi::DigitalIn limit_switch('A');
 
 inline ez::Piston mogo('A');
+inline ez::Piston mogo_2('B');
 inline pros::MotorGroup intake({-2, 10});
