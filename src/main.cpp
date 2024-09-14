@@ -43,6 +43,7 @@ void initialize() {
   ez::as::auton_selector.autons_add({
       Auton("Auton function blue.", auton_blue),
       Auton("Auton function red.", auton_red),
+      Auton("Auton function 3", auton_3),
   });
 
   // Initialize chassis and auton selector

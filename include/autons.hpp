@@ -14,5 +14,6 @@ void combining_movements();
 void interfered_example();
 void auton_blue();
 void auton_red();
+void auton_3();
 
 void default_constants();

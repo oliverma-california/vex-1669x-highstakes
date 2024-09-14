@@ -124,3 +124,8 @@ void auton_red() {
 
 }
 
+void auton_3() {
+  chassis.pid_drive_set(3_in, 20);
+  chassis.pid_wait();
+}
+
